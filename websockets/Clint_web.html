@@ -7,7 +7,7 @@
     <button onclick="myFunctionON()">Turn On LED</button>
     <button onclick="myFunctionOFF()">Turn OFF LED</button>
         <script>
-            <-- for time  !-->
+            <!-- for time  !-->
             var ws = new WebSocket("ws://127.0.0.1:12355/"),
                 messages = document.createElement('ul');
             ws.onmessage = function (event) {
@@ -18,7 +18,7 @@
                 messages.appendChild(message);
             };
             document.body.appendChild(messages);
-            <-- for instruction sending to the gpio !->
+            <!-- for instruction sending to the gpio !->
             function myFunctionON() {
             ws.send('1');
                }
