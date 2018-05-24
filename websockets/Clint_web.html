@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WebSocket demo</title>
+    </head>
+    <body>
+    <button onclick="myFunctionON()">Turn On LED</button>
+    <button onclick="myFunctionOFF()">Turn OFF LED</button>
+        <script>
+            var ws = new WebSocket("ws://127.0.0.1:12355/"),
+                messages = document.createElement('ul');
+            ws.onmessage = function (event) {
+                var messages = document.getElementsByTagName('ul')[0],
+                    message = document.createElement('li'),
+                    content = document.createTextNode(event.data);
+                message.appendChild(content);
+                messages.appendChild(message);
+            };
+            document.body.appendChild(messages);
+            
+            function myFunctionON() {
+            ws.send('1');
+               }
+            
+            function myFunctionOFF() {
+            ws.send('0');
+               }
+        </script>
+        
+    </body>
+</html>
