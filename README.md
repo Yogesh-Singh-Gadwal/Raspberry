@@ -1,2 +1,2 @@
 # this is just for learning perpose
-# it´s notan actual project
+# it´s not an actual project
