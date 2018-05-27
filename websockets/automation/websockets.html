@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WebSocket demo</title>
+    </head>
+    <body>
+            <!-- settijng the texty field  and button -->
+            <input type="text" id="threshold">
+            <button onclick="sendthreshold()">send</button>
+    
+        <script>
+            var ws = new WebSocket("ws://127.0.0.1:12361/"),
+                messages = document.createElement('ul');
+            ws.onmessage = function (event) {
+                var messages = document.getElementsByTagName('ul')[0],
+                    message = document.createElement('li'),
+                    content = document.createTextNode(event.data);
+                message.appendChild(content);
+                messages.appendChild(message);
+                messages.appendChild();
+            };
+            document.body.appendChild(messages);
+            
+            
+            function sendthreshold(){
+                var x=document.getElementById("threshold").value
+                ws.send(x)
+            }
+
+        </script>
+        
+    </body>
+</html>
